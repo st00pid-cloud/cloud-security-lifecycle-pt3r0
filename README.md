@@ -3,7 +3,7 @@
 
 Focuses on engineering a 4-stage cloud security lifecycle pipeline on AWS, establishing enterprise defense-in-depth across pre-commit Infrastructure as Code scanning, perimeter-hardened Cloud Delivery Network Storage architectures, and sub-3 second serverless auto-remediation workflows aligned with NIST, SP 800-53 and CIS Benchmarks.
 
-<br>*Whole repo contains my process* 
+<br>*Whole repo contains my process, all research, notes and initiative is from me and my ai-assistants(used-properly)* 
 
 ### Cloud Security Lifecycle
 * a. Preventative Lifecycle
