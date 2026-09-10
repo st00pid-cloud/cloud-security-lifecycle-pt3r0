@@ -14,6 +14,9 @@ But I decided to move forward and expand the diagram to think more like an actua
 
 The current architecture establishes a hardened content delivery perimeter on AWS. It eliminates direct public exposure of cloud storage by enforcing Amazon CloudFront Origin Access Control (OAC), cryptographic request signing (SigV4), and strict transport layer policies. It also presents a dedicated Logging Bucket. 
 
+## What are the Differences here?
+The two diagrams differ in scope and focus. The current diagram presents a broad multi-layered architecture that demonstrates defense in depth: it shows how architectural controls, encryption and versioning and a dedicated logging bucket all work together to secure content delivery. The old diagram narrows the lends to a single control path. It highlights how CloudFront communicates with S3 exclusively through IAM SigV4 Origin Access Control, ensuring least privilege and secure origin access. Instead of layering multiple protection, it emphasizes identity enforcement and strict access boundaries. 
+
 ## Additional Diagrams and Practices 
 
 ### Threat Modelling and Framework Control Mapping
@@ -45,6 +48,8 @@ Core infrastructure threats are addressed by substituting standard configuration
 Why the diagrams? 
   I wanted to learn the GRC side of creating architectures since there are industry controls : D.
 
+## Implementing the Architectural Changes in Four Phases. 
+  To keep this short, I'll be transferring it to another .md file. 
 ## Definition of Terms
 1. Confused Deputy Vulnerability - A security issue where an entity that doesn't have permission to perform an action can coerce a more-privileged entity to perform the action. 
 
