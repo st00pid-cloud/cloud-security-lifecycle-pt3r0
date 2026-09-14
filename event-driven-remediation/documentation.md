@@ -1,5 +1,5 @@
 # Architectural Overview
-  I like diagrams <br> 
+  I like diagrams. I am writing this at 4:00 am cause I just want to. <br> 
 <img width="889" height="611" alt="archi-overview" src="https://github.com/user-attachments/assets/9060372a-087c-4790-a1f7-1ce5f5a55c56" />
 
 ## Implemented Services 
@@ -15,7 +15,35 @@
 | AWS CloudTrail |Centralized logging and telemetry store| Captures all standard output (stdout), execution runtimes, memory metrics, and error traces from the Lambda function, creating an auditable execution record to measure Mean Time to Remediate (MTTR). |
 
 ## Implementation Process and Documentation 
+1. CloudTrail Checking
+   _Just checking if CloudTrail's checking what I do~_
+   <img width="1535" height="710" alt="11-cloudtrail-works" src="https://github.com/user-attachments/assets/156268b3-7bc4-4815-ba0e-3a87647791e0" />
+   <img width="1532" height="704" alt="image" src="https://github.com/user-attachments/assets/f26963df-76bd-4633-a4ec-7233571bcfc4" />
 
+2. Simple Notification Service
+   _Sending the message that "Someone's doing something!"_
+   <img width="1536" height="761" alt="image" src="https://github.com/user-attachments/assets/7362f52f-ad3d-46e1-8e61-8bfd14326552" />
+3. Look at the message
+   _Who is bro sending the alerts to?_
+   <img width="1535" height="712" alt="image" src="https://github.com/user-attachments/assets/795adb9e-b24e-4a32-b5cd-1f50fdd0b3fd" />
+4. Making the IAM Role~
+   <img width="1527" height="705" alt="image" src="https://github.com/user-attachments/assets/5cba935e-67ab-4a00-8983-669ad2511cef" />
+5. How 'bout the Lambda?
+   <img width="1532" height="741" alt="image" src="https://github.com/user-attachments/assets/2cc9e6b7-0a05-48cf-8ee4-a380be841658" />
+6. EventBridge Rule Configuration   
+    <img width="1242" height="371" alt="image" src="https://github.com/user-attachments/assets/a3cb4a25-6399-4256-8819-c57a242b31df" />
+## Testing and Validation
+  Thru the cloud shell bby, anyways letsa go
+
+### Drift Simulation
+* Creating a dummy test bucket
+### Verification and MTTR Measurement
+* Heck YEAH EMAILS
+
+
+   
+  
+   
 ## Problems Encountered
 
 ## Learnings
@@ -26,4 +54,5 @@
   3. Why does the Amazon EventBridge branch into two?
        This is from the "Fan-Out  Architectural Pattern," where the automated technical response is separated from the human alerting. This means that AWS Lambda focuses entirely on immediate technical containment, while Amazon SNS handles team visibility and paging. Because both services are invoked simultaneously in parallel, Mean Time to Remediate (MTTR) is cut down to milliseconds. Furthermore, this split acts as a critical fail-safe: if the Lambda function times out, crashes, or hits permissions errors, the security team still receives the raw drift notification from SNS. Ultimately, this approach avoids bottlenecks, provides built-in retries for code execution, and guarantees that incident notification never stalls behind script performance.
 ### From: Implemented Services
+1. Wrong ahh region. 
 ### From: Implementation 
