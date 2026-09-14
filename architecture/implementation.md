@@ -16,19 +16,29 @@
 # The Current Version 
   The current architecture was built in four phases
 
-  ## Edge Perimeter Defense
+## Implementation Specifications
+  ### Edge Perimeter Defense
   This was added to mitigate Layer 7 application attacks, bot traffic, and reconnaissance before requests touch CloudFront or S3. I created a protection pack with the following rules: 
     <br>(1) AWSManagedCommonRuleSet
     <br>(2) AWSManagedRulesKnownBadInputsRuleSet
     <br>(3) AWSManagedRulesAmazonIpReputationList
     <br>(4) Rate Limiting Rule (2000 requests per 5-minute window)
 
-  ## Client Security Headers 
+  ### Client Security Headers 
   This is to instruct the end user's browser to enforce strict parsing behaviors and disallow insecure embedding. The following components are added in a custom CloudFront Response Header Policy enforcing: 
     <br>(1)  Strict Transport Security with max-age 2 years (63072000) includeSubDomains and preload. 
     <br>(2) Content-Security-Policy (default-src 'self') 
     <br>(3) X-Frame-Options(DENY) 
     <br>(4) X-Content-Type-Options (no-sniff) 
     <br>(5) 
+
+  ### Storage Protection and Disaster Recovery 
+  Basically adding keys and all. 
+  <br> (1) The initial version had the default SSE-S3 and I replaced it with SSE-KMS to enable automatic annual key rotation and an independent audit trail in AWS CloudTrail  
+  <br> (2) Object Versioning was also enabled from the initial "not-enabled" state to protect from accidental deletion
+  <br> (3) The bucket policy was also updated ("aws:SecureTransport" : "false") to explicitly deny any request. 
+
+  ### Another S3 Bucket for Logging
+  <br> (1) A dedicated logging bucket was added and connected to the CloudFront and also the origin bucket. 
   
     
