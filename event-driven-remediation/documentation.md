@@ -14,7 +14,7 @@
 | Amazon CloudWatch Logs | Provides continuous API auditing and visibility across AWS account resources. | viewer |
 | AWS CloudTrail |Centralized logging and telemetry store| Captures all standard output (stdout), execution runtimes, memory metrics, and error traces from the Lambda function, creating an auditable execution record to measure Mean Time to Remediate (MTTR). |
 
-## Implementation Process and Documentation 
+## Implementation Process and Documentatin 
 1. CloudTrail Checking
    _Just checking if CloudTrail's checking what I do~_
    <img width="1535" height="710" alt="11-cloudtrail-works" src="https://github.com/user-attachments/assets/156268b3-7bc4-4815-ba0e-3a87647791e0" />
@@ -22,15 +22,17 @@
 
 2. Simple Notification Service
    _Sending the message that "Someone's doing something!"_
+   I created a standard topic type, nothing else added.
    <img width="1536" height="761" alt="image" src="https://github.com/user-attachments/assets/7362f52f-ad3d-46e1-8e61-8bfd14326552" />
-3. Look at the message
-   _Who is bro sending the alerts to?_
+4. Confirming the subscription
+   Under the topic, I created as subscription with email as the protocol. From my personal email, I accepted the subscription. 
    <img width="1535" height="712" alt="image" src="https://github.com/user-attachments/assets/795adb9e-b24e-4a32-b5cd-1f50fdd0b3fd" />
-4. Making the IAM Role~
+5. Making the IAM Role
+   For the Lambda Role, I chose AWS Service as the trusted entity and Lambda as the use case. 
    <img width="1527" height="705" alt="image" src="https://github.com/user-attachments/assets/5cba935e-67ab-4a00-8983-669ad2511cef" />
-5. How 'bout the Lambda?
+7. How 'bout the Lambda?
    <img width="1532" height="741" alt="image" src="https://github.com/user-attachments/assets/2cc9e6b7-0a05-48cf-8ee4-a380be841658" />
-6. EventBridge Rule Configuration   
+8. EventBridge Rule Configuration   
     <img width="1242" height="371" alt="image" src="https://github.com/user-attachments/assets/a3cb4a25-6399-4256-8819-c57a242b31df" />
 ## Testing and Validation
   Thru the cloud shell bby, anyways letsa go
