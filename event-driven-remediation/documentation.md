@@ -28,11 +28,12 @@
    Under the topic, I created as subscription with email as the protocol. From my personal email, I accepted the subscription. 
    <img width="1535" height="712" alt="image" src="https://github.com/user-attachments/assets/795adb9e-b24e-4a32-b5cd-1f50fdd0b3fd" />
 5. Making the IAM Role
-   For the Lambda Role, I chose AWS Service as the trusted entity and Lambda as the use case. 
+   For the Lambda Role, I chose AWS Service as the trusted entity and Lambda as the use case. The custom policy is also under the event-driven-remediation folder. 
    <img width="1527" height="705" alt="image" src="https://github.com/user-attachments/assets/5cba935e-67ab-4a00-8983-669ad2511cef" />
-7. How 'bout the Lambda?
+7. Python Lambda Code
+   For some specifics in the console, Python 3.12 serves as the runtime, architecture chosen is x86_64 and the role chosen is the completed LambdaS3RemediationRole 
    <img width="1532" height="741" alt="image" src="https://github.com/user-attachments/assets/2cc9e6b7-0a05-48cf-8ee4-a380be841658" />
-8. EventBridge Rule Configuration   
+9. EventBridge Rule Configuration   
     <img width="1242" height="371" alt="image" src="https://github.com/user-attachments/assets/a3cb4a25-6399-4256-8819-c57a242b31df" />
 ## Testing and Validation
   Thru the cloud shell bby, anyways letsa go
