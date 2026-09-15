@@ -1,0 +1,31 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "CloudWatchLogGroupDelivery",
+      "Effect": "Allow",
+      "Action": [
+        "logs:CreateLogGroup",
+        "logs:CreateLogStream",
+        "logs:PutLogEvents"
+      ],
+      "Resource": "arn:aws:logs:*:*:log-group:/aws/lambda/s3-public-access-auto-remediation:*"
+    },
+    {
+      "Sid": "S3BucketRemediationPermissions",
+      "Effect": "Allow",
+      "Action": [
+        "s3:PutBucketPublicAccessBlock",
+        "s3:GetBucketPublicAccessBlock",
+        "s3:GetBucketPolicy"
+      ],
+      "Resource": "arn:aws:s3:::*"
+    },
+    {
+      "Sid": "SNSSecurityAlertPublish",
+      "Effect": "Allow",
+      "Action": "sns:Publish",
+      "Resource": "arn:aws:sns:*:*:SecurityAlertsTopic"
+    }
+  ]
+}
