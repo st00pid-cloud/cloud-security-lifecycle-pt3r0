@@ -36,12 +36,9 @@
 9. EventBridge Rule Configuration   
     <img width="1242" height="371" alt="image" src="https://github.com/user-attachments/assets/a3cb4a25-6399-4256-8819-c57a242b31df" />
 ## Testing and Validation
-  Thru the cloud shell bby, anyways letsa go
+  This was done through the cloud shell with the following commands. For the first part, we have to ensure that 
 
-### Drift Simulation
-* Creating a dummy test bucket
-### Verification and MTTR Measurement
-* Heck YEAH EMAILS
+
 
 
    
@@ -56,6 +53,13 @@
   2. Asynchronous Invocation - When a service is called asynchronously, the service requester and the service provider run in different threads of execution.
   3. Why does the Amazon EventBridge branch into two?
        This is from the "Fan-Out  Architectural Pattern," where the automated technical response is separated from the human alerting. This means that AWS Lambda focuses entirely on immediate technical containment, while Amazon SNS handles team visibility and paging. Because both services are invoked simultaneously in parallel, Mean Time to Remediate (MTTR) is cut down to milliseconds. Furthermore, this split acts as a critical fail-safe: if the Lambda function times out, crashes, or hits permissions errors, the security team still receives the raw drift notification from SNS. Ultimately, this approach avoids bottlenecks, provides built-in retries for code execution, and guarantees that incident notification never stalls behind script performance.
-### From: Implemented Services
-1. Wrong ahh region. 
-### From: Implementation 
+
+
+## OVERALL LEARNING 
+1. Misunderstanding the Event Ingestion Pipeline
+	Initially, I thought that EventBridge would listen to the free default 90-day CloudTrail Event History without configuring an active Trail. I only checked it for a short time and did not realize that it relies on active log stream delivery from a provisioned Trail delivering management event. 
+
+2. Wrong Region 
+	I initially deployed the EventBridge in the us-east-1 region while I made the S3 in ap-southeast-1. S3 bucket management API operations are logged in the AWS Region where the bucket is hosted. 
+
+
